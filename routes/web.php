@@ -11,21 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.index');
-})->name('home');
-Route::get('/about', function () {
-    return view('pages.about');
-})->name('about');
-Route::get('/contact', function () {
-    return view('pages.contact');
-})->name('contact');
+Route::get('/', 'PagesController@index' )->name('index');
+
+Route::get('/about', 'PagesController@about' )->name('about');
+
+Route::get('/contact', 'PagesController@contact')->name('contact');
+
 Route::post('/contact', function () {
+    $data = request()->all();
 
-   $data = request()->all();
-
-   echo "Email: " . $data['email'] . '<br>';
-   echo "Body: " . $data['body'];
+    echo "Email: " . $data['email'] . '<br>';
+    echo "Body: " . $data['body'];
 
 
 });
