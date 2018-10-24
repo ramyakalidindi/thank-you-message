@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    function index()
-    {
+    function home() {
         return view('pages.index');
     }
     function about() {
@@ -20,9 +19,11 @@ class PagesController extends Controller
 
         $name = $request->name;
 
-        return redirect()->route('thanks',['name' => $name]);
+
+        return redirect()->route('thanks',[ 'name' => $name ]);
     }
-    function thanks($name) {
+    function thanks($name, Request $request) {
+
 
         return view('pages.thankyou')->with(compact('name'));
     }
